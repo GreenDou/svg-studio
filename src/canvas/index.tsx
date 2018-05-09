@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { StoreState } from '../store';
 
 import * as models from './models';
+import * as style from './style.css';
 
 export interface CanvasProps {
   actions:CanvasBindedActions;
@@ -21,7 +22,10 @@ export class SVGCanvasClass extends React.Component<CanvasProps, {}> {
     this.on_click = this.on_click.bind(this);
   }
   render() {
-    return <div ref={(el) => { this.element = el; }} onClick={this.on_click} />
+    const class_name = this.canvas_index === this.props.current_canvas_index ?
+        style.selected : '';
+    return <div ref={(el) => { this.element = el; }} className={class_name}
+        onClick={this.on_click} />
   }
 
   componentDidMount() {
@@ -40,7 +44,7 @@ export class SVGCanvasClass extends React.Component<CanvasProps, {}> {
     if (this.props.current_canvas_index === this.canvas_index) {
       return;
     }
-    
+
     this.props.actions.action_select_canvas(this.canvas_index);
   }
 }
@@ -48,8 +52,6 @@ export class SVGCanvasClass extends React.Component<CanvasProps, {}> {
 const binded_actions = {
   action_select_canvas: models.action_select_canvas,
 };
-
-
 
 function map_dispatch(dispatch:Dispatch<AnyAction>) {
   return {

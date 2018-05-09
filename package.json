@@ -53,7 +53,6 @@
     "webpack-serve": "^0.3.1"
   },
   "devDependencies": {
-    "babel-plugin-react-css-modules": "^3.4.0",
     "stylelint": "^9.2.0",
     "stylelint-csstree-validator": "^1.2.2"
   }

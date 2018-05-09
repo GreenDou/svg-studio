@@ -49,7 +49,7 @@ module.exports = {
 				exclude: /node_modules/,
 				loader: 'babel-loader',
 				options: {
-					presets: ['env']
+					presets: ['env'],
 				}
 			},
 			{
@@ -62,7 +62,8 @@ module.exports = {
 						loader: 'css-loader',
 						options: {
 							sourceMap: true,
-							importLoaders: 1
+							importLoaders: 1,
+							module: true,
 						}
 					},
 					{
@@ -82,7 +83,8 @@ module.exports = {
 		new webpack.DefinePlugin({
 			__DEV__: process.env.NODE_ENV !== 'production',
 		}),
-    new UglifyJSPlugin(),
+		// TODO Add it to prod
+    // new UglifyJSPlugin(), 
     new HTMLPlugin({
       template: './src/index.html',
     }),
