@@ -3,7 +3,7 @@ import { AnyAction, Dispatch, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { ToolbarButton } from './button';
-import { action_add_rect } from '../workspace/models/actions';
+import { action_add_rect } from '../canvas/models/actions';
 
 export interface ToolbarProps {
   actions:ReturnType<typeof map_dispatch>['actions'];
@@ -22,7 +22,7 @@ export class ToolbarClass extends React.Component<ToolbarProps> {
   }
 
   add_rect(event:React.MouseEvent<Node>) {
-    this.props.actions.action_add_rect(0);
+    this.props.actions.action_add_rect();
   }
 }
 

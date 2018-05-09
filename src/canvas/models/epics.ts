@@ -7,11 +7,12 @@ import * as I from '../../public_interfaces';
 import * as A from './actions';
 
 const epic_add_rect:I.Epic = 
-  (action$:ActionsObservable<I.Action<A.AddRectPayload>>, state, deps) => 
+  (action$:ActionsObservable<I.Action<A.AddRectPayload>>, store, deps) => 
     action$.ofType(A.ActionTypes.ADD_RECT)
       .pipe(
         tap((action) => {
-          const workspace = deps.get_workspace(action.payload.index);
+          const workspace = deps.get_canvas(
+              store.value.canvas.selected_canvas_index);
           
           const rect = workspace.rect(100, 100).attr({ fill: '#f06' });
           (rect as any).draggable();

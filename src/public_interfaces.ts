@@ -1,1 +1,1 @@
-export { Action, Epic, State, Store } from './store';
+export { Action, Epic, StoreState, Store } from './store';
